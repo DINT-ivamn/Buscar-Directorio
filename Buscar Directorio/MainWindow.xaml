@@ -1,0 +1,35 @@
+﻿<Window x:Class="Buscar_Directorio.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Buscar_Directorio"
+        mc:Ignorable="d"
+        Title="Buscador de Directorio" Height="450" Width="800" Icon="48.ico">
+
+    <Window.Resources>
+        <Style TargetType="{x:Type local:FolderBrowser}">
+            <Setter Property="Margin" Value="2,5,2,5"/>
+            <Setter Property="AllowNewFolder" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel Orientation="Vertical">
+        <local:FolderBrowser x:Name="TrabajoFolderBrowser" Etiqueta="Directorio de trabajo"/>
+        <local:FolderBrowser x:Name="TemporalFolderBrowser" Etiqueta="Directorio temporal"/>
+        <local:FolderBrowser x:Name="LogFolderBrowser" Etiqueta="Directorio de log"/>
+        <TextBlock>
+            <Run Text="Directorio de trabajo: "/>
+            <Run Text="{Binding ElementName=TrabajoFolderBrowser, Path=SelectedPath}"/>
+        </TextBlock>
+        <TextBlock>
+            <Run Text="Directorio temporal: "/>
+            <Run Text="{Binding ElementName=TemporalFolderBrowser, Path=SelectedPath}"/>
+        </TextBlock>
+        <TextBlock>
+            <Run Text="Directorio de log: "/>
+            <Run Text="{Binding ElementName=LogFolderBrowser, Path=SelectedPath}"/>
+        </TextBlock>
+    </StackPanel>
+</Window>
